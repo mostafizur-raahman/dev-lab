@@ -3,8 +3,13 @@ import { useEffect, useRef } from "react";
 import "@xterm/xterm/css/xterm.css";
 const Terminal = () => {
     const terminalRef = useRef();
+    const isRenderd = useRef(false);
 
     useEffect(() => {
+        // Rendered one time
+        if (isRenderd.current) return;
+        isRenderd.current = true;
+
         const terminal = new XTerminal({
             rows: 20,
         });
